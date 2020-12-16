@@ -9,11 +9,19 @@
     "server:dev": "scripty",
     "server:prod": "scripty",
     "start": "scripty",
-    "build": "babel ./assets/js/data.js -o ./assets/js/data_bundle.js",
+    "build": "npm run client:prod & npm run server:prod",
     "test:e2e": "node ./tests/e2e.spec.js",
     "test:api": "mocha --file ./tests/api.spec.js",
     "demo": "echo demo",
-    "predemo": "echo predemo"
+    "predemo": "echo predemo",
+    "demo1": "echo demo1",
+    "demo2": "echo demo1",
+    "demo12": "npm run demo1 && npm run demo2",
+    "printConfigPort": "echo $npm_package_config_port",
+    "checkRepeatCode": "jscpd -l 1 -k 10 ./repeatCodeDemo"
+  },
+  "config": {
+    "port": 3000
   },
   "dependencies": {
     "@koa/router": "^10.0.0",
@@ -31,6 +39,7 @@
     "@babel/plugin-transform-modules-systemjs": "^7.12.1",
     "@babel/preset-env": "^7.12.7",
     "chai": "^4.2.0",
+    "jscpd": "^3.3.23",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
     "puppeteer": "^5.5.0",
@@ -39,6 +48,8 @@
     "supertest": "^6.0.1",
     "tree-cli": "^0.6.7",
     "webpack": "^5.10.2",
-    "webpack-cli": "^4.2.0"
+    "webpack-cli": "^4.2.0",
+    "webpack-merge": "^5.7.2",
+    "yargs": "^16.2.0"
   }
 }
