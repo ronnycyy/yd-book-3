@@ -43,8 +43,22 @@
     - 将process.argv转成json形式
     - 取得开发/生产环境，只需.mode即可
   - webpack-merge
-    - 
+    - 合并'公共的'和'开发/生产的'webpack配置文件
+
+- MPA
+  - Multi-page Application 多页面应用
+  - 最传统的网页设计，使用者体验比较差，整体流畅度扣分。但进入门槛低
+  - html -> node -> 数据灌进去 -> 吐给浏览器
+  - 纯服务端渲染
+
+- 两套模版引擎
+  - swig 
+    - 最直接的展示html
+    - 模板语法，填充多页(todo)
+  - vue 
+    - 为dom服务
+    - 组件通过webpack产生bundle.js(.css)，再引回index.html，恢复组件功能
 
 ### 学习时间点
 
-1:14:24
+1:45:35
