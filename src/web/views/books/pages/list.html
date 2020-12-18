@@ -1,9 +1,18 @@
 {% extends '../../layouts/layout.html' %}
 
-<!-- 这样会动态替换layout.html中的{% xx %} -->
+<!-- 后台模板，里面的值会动态替换layout.html中的{% block xx %}{% endblock %}，即把数据填充进去，形成一个单页 -->
+
 {% block title %} 图书列表页 {% endblock %}
+
+{% block head %}
+<!-- injectcss -->
+{% endblock %}
+
 {% block content %}
-<div>
-  <h1>hello swig</h1>
-</div>
+  {% include "../../../components/banner/banner.html" %}
+{% endblock %}
+
+<!-- webpack 插入js脚本 -->
+{% block script %}
+<!-- injectjs -->
 {% endblock %}
