@@ -3,6 +3,8 @@ const { merge } = require('webpack-merge');
 const { sync } = require('glob');
 // 打包组件的html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 基于HtmlWebpackPlugin编写的，自己的插件
+const HtmlAfterPlugin = require('./config/HtmlAfterPlugin');
 
 // 容错处理，如果读取失败，使用development
 const _mode = argv.mode || 'development';
@@ -12,17 +14,16 @@ let _entry = {};
 let _plugins = [];
 for (let item of files) {
   if (/([a-zA-Z]+-[a-zA-Z]+).entry.js/.test(item)) {
-    const key = RegExp.$1; /** 'books-create', ..  */
-    _entry[
-      key
-    ] = item; /** './src/web/views/books/books-create.entry.js', ..  */
+    const key = RegExp.$1; /** key: 'books-create', ..  */
+    /** item: './src/web/views/books/books-create.entry.js', ..  */
+    _entry[key] = item;
     const [dist, template] = key.split('-');
     _plugins.push(
       new HtmlWebpackPlugin({
         filename: `../views/${dist}/pages/${template}.html` /** 打包后的目录 */,
         template: `./src/web/views/${dist}/pages/${template}.html`,
         chunks: ['rumtime', key],
-        // inject: false
+        inject: false,
       })
     );
   }
@@ -33,7 +34,7 @@ const webpackConfig = {
   optimization: {
     runtimeChunk: 'single' /** 提取公共的运行时代码 */,
   },
-  plugins: [..._plugins],
+  plugins: [..._plugins, new HtmlAfterPlugin()]
 };
 
 module.exports = merge(webpackConfig, _mergeConfig);

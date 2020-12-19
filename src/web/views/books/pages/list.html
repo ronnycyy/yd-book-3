@@ -1,4 +1,4 @@
-{% extends '../../layouts/layout.html' %}
+{% extends '@layouts/layout.html' %}
 
 <!-- 后台模板，里面的值会动态替换layout.html中的{% block xx %}{% endblock %}，即把数据填充进去，形成一个单页 -->
 
@@ -9,7 +9,8 @@
 {% endblock %}
 
 {% block content %}
-  {% include "../../../components/banner/banner.html" %}
+  {% include "@components/banner/banner.html" %}
+  <h1>图书列表</h1>
 {% endblock %}
 
 <!-- webpack 插入js脚本 -->

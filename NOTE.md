@@ -75,8 +75,16 @@
     - 组件通过 webpack 产生 bundle.js(.css)，再引回 index.html，恢复组件功能
 
 - travis
+
   - 自动化测试
+
+- 手写 webpack 插件
+  - 注意 HtmlWebpackPlugin 的生命周期
+  - chunk 生成途径
+    - 入口
+    - 异步产生
+    - 代码分割
 
 ### 学习时间点
 
-1:59:44
+1:02:24
