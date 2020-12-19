@@ -74,6 +74,9 @@
     - 为 dom 服务
     - 组件通过 webpack 产生 bundle.js(.css)，再引回 index.html，恢复组件功能
 
+- travis
+  - 自动化测试
+
 ### 学习时间点
 
 1:59:44
