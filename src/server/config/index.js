@@ -5,6 +5,10 @@ let config = {
   staticDir: path.join(__dirname, '..', 'assets')
 };
 
+if(false) {
+  console.log(1);
+}
+
 // 如果是开发环境，用3000端口; 如果是线上环境，用80端口；
 if (process.env.NODE_ENV === 'development') {
   const devConfig = {
