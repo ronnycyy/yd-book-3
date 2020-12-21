@@ -102,8 +102,21 @@
       比如说 const a = 0; if(a === 1) {...}, 那 if 这一段就会删掉（清洗）
     - @rollup/plugin-replace
       替换指定的代码
-  - rollup 清洗地还不是很彻底，还有一个更彻底的，是什么呢？敬请期待！
+  - rollup 清洗地还不是很彻底，还有一个更彻底的包：prepack
+    - 激进的清洗(直接删除无用代码)
+    - npx prepack（npx: 使用项目中安装的包）
+      - npx prepack ./prepackDemo/entry.js --out ./prepackDemo/output.js
 
-### 学习时间点
+#### 全部配置完成，启动项目
 
-1:52:15
+- 将 components 和 layouts 拷贝过来
+  - copy-webpack-plugin，线上环境时，拷贝要做压缩处理（开发环境就不用了）
+- _.bundle.js 增加内容哈希值 _.57224.bundle.js
+  - 如果更新了，打上 hash 值，就知道哪些更新了哪些没有更新。用户访问时，没有更新的直接在缓存里读就行，提升速度
+  - 有 3 种 hash 类型
+    - hash 如果一个文件改动，所有文件的 hash 值都会变化，用户缓存全部失效
+    - chunkhash
+      - js 中引入 css，这样会打包出两个 bundle：js 的 bundle、css 的 bundle
+      - 如果改变了 css，因为两个文件是一个 chunk，js 的 hash 也会变化
+    - contenthash
+      - 改变了哪个文件，就只改变它的 hash，不影响其他的
